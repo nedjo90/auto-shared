@@ -21,9 +21,18 @@ export interface IUser {
   email: string;
   firstName: string;
   lastName: string;
+  displayName: string | null;
   phone: string | null;
   address: string | null;
+  addressStreet: string | null;
+  addressCity: string | null;
+  addressPostalCode: string | null;
+  addressCountry: string | null;
   siret: string | null;
+  companyName: string | null;
+  avatarUrl: string | null;
+  bio: string | null;
+  accountCreatedAt: string | null;
   isAnonymized: boolean;
   status: UserStatus;
   createdAt: string;

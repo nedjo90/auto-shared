@@ -23,3 +23,12 @@ export type {
   IRolePermission,
   IConfigFeature,
 } from "./rbac.js";
+export type {
+  ProfileCompletionBadge,
+  IConfigProfileField,
+  IProfileUpdateInput,
+  IIncompleteField,
+  IProfileCompletionResult,
+  IPublicSellerProfile,
+  ISellerRating,
+} from "./profile.js";
