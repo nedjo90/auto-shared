@@ -1,4 +1,4 @@
-import type { Role } from "./user.js";
+import type { RoleCode } from "./rbac.js";
 
 /**
  * Decoded JWT token payload from Azure AD B2C.
@@ -22,7 +22,7 @@ export interface IUserContext {
   id?: string;
   azureAdB2cId: string;
   email?: string;
-  roles: Role[];
+  roles: RoleCode[];
 }
 
 /**
@@ -32,7 +32,7 @@ export interface IUserContext {
 export interface IAuthState {
   user: IAuthUser | null;
   isAuthenticated: boolean;
-  roles: Role[];
+  roles: RoleCode[];
   isLoading: boolean;
   lastActivity: number;
 }
