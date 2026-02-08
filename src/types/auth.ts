@@ -1,5 +1,8 @@
+import type { Role } from "./user.js";
+
 /**
  * Decoded JWT token payload from Azure AD B2C.
+ * Known standard claims are explicitly typed; extra claims are not carried.
  */
 export interface IDecodedToken {
   sub: string;
@@ -10,7 +13,6 @@ export interface IDecodedToken {
   exp?: number;
   nbf?: number;
   iat?: number;
-  [key: string]: unknown;
 }
 
 /**
@@ -20,16 +22,17 @@ export interface IUserContext {
   id?: string;
   azureAdB2cId: string;
   email?: string;
-  roles: string[];
+  roles: Role[];
 }
 
 /**
- * Frontend authentication state (Zustand store shape).
+ * Frontend authentication state data (data-only projection of the Zustand store).
+ * Does not include store actions — use the full store type from auth-store.ts for that.
  */
 export interface IAuthState {
   user: IAuthUser | null;
   isAuthenticated: boolean;
-  roles: string[];
+  roles: Role[];
   isLoading: boolean;
   lastActivity: number;
 }
