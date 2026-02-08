@@ -5,11 +5,11 @@ describe("Constants", () => {
   describe("ROLES", () => {
     it("should contain all 5 defined roles", () => {
       expect(ROLES).toHaveLength(5);
+      expect(ROLES).toContain("visitor");
       expect(ROLES).toContain("buyer");
-      expect(ROLES).toContain("private_seller");
-      expect(ROLES).toContain("professional_seller");
+      expect(ROLES).toContain("seller");
       expect(ROLES).toContain("moderator");
-      expect(ROLES).toContain("admin");
+      expect(ROLES).toContain("administrator");
     });
   });
 

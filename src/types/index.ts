@@ -13,10 +13,12 @@ export type {
   IUserConsent,
   IConsentInput,
 } from "./consent.js";
+export type { IDecodedToken, IUserContext, IAuthState, IAuthUser, ISessionConfig } from "./auth.js";
 export type {
-  IDecodedToken,
-  IUserContext,
-  IAuthState,
-  IAuthUser,
-  ISessionConfig,
-} from "./auth.js";
+  RoleCode,
+  IRole,
+  IUserRole,
+  IPermission,
+  IRolePermission,
+  IConfigFeature,
+} from "./rbac.js";

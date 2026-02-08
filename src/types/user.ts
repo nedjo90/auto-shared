@@ -1,4 +1,4 @@
-export type Role = "buyer" | "private_seller" | "professional_seller" | "moderator" | "admin";
+export type Role = "visitor" | "buyer" | "seller" | "moderator" | "administrator";
 
 export type UserStatus = "active" | "suspended" | "anonymized";
 
