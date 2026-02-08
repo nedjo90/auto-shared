@@ -16,6 +16,7 @@ export type {
 export type { IDecodedToken, IUserContext, IAuthState, IAuthUser, ISessionConfig } from "./auth.js";
 export type {
   RoleCode,
+  PermissionCode,
   IRole,
   IUserRole,
   IPermission,

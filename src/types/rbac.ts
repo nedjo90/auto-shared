@@ -1,5 +1,13 @@
 export type RoleCode = "visitor" | "buyer" | "seller" | "moderator" | "administrator";
 
+export type PermissionCode =
+  | "listing.view"
+  | "listing.create"
+  | "listing.edit"
+  | "listing.moderate"
+  | "user.manage"
+  | "admin.access";
+
 export interface IRole {
   ID: string;
   code: RoleCode;
@@ -18,7 +26,7 @@ export interface IUserRole {
 
 export interface IPermission {
   ID: string;
-  code: string;
+  code: PermissionCode;
   description: string;
 }
 
@@ -33,6 +41,6 @@ export interface IConfigFeature {
   code: string;
   name: string;
   requiresAuth: boolean;
-  requiredRole_code: string | null;
+  requiredRole_code: RoleCode | null;
   isActive: boolean;
 }

@@ -1,4 +1,7 @@
-export type Role = "visitor" | "buyer" | "seller" | "moderator" | "administrator";
+import type { RoleCode } from "./rbac.js";
+
+/** @deprecated Use RoleCode instead */
+export type Role = RoleCode;
 
 export type UserStatus = "active" | "suspended" | "anonymized";
 

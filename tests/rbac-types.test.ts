@@ -6,6 +6,7 @@ import type {
   IRolePermission,
   IConfigFeature,
   RoleCode,
+  PermissionCode,
 } from "../src/types/index.js";
 import { ROLE_CODES, ROLE_HIERARCHY, PERMISSION_CODES, ROLES } from "../src/constants/index.js";
 
@@ -81,6 +82,20 @@ describe("RBAC Types", () => {
       };
       expect(feature.requiresAuth).toBe(true);
       expect(feature.requiredRole_code).toBeNull();
+    });
+  });
+
+  describe("PermissionCode type", () => {
+    it("should accept valid permission codes", () => {
+      const codes: PermissionCode[] = [
+        "listing.view",
+        "listing.create",
+        "listing.edit",
+        "listing.moderate",
+        "user.manage",
+        "admin.access",
+      ];
+      expect(codes).toHaveLength(6);
     });
   });
 });
