@@ -60,3 +60,11 @@ export type {
   IDataExportSection,
   IDataExportContent,
 } from "./rgpd.js";
+export type {
+  KpiMetric,
+  IKpiValue,
+  ITrafficSource,
+  IDashboardKpis,
+  ITrendDataPoint,
+  IKpiCardConfig,
+} from "./dashboard.js";

@@ -5,6 +5,7 @@ export {
   PERMISSION_CODES,
   CONSENT_TYPES,
   LISTING_STATUS,
+  expandRolesWithHierarchy,
 } from "./roles.js";
 export type { ConsentType, ListingStatus } from "./roles.js";
 export {

@@ -28,6 +28,17 @@ export const PERMISSION_CODES: readonly PermissionCode[] = [
   "admin.access",
 ] as const;
 
+/**
+ * Expand a set of role codes to include all roles at or below
+ * the highest hierarchy level. Enables admin super-role access (FR54):
+ * an administrator automatically gains seller, buyer, moderator capabilities.
+ */
+export function expandRolesWithHierarchy(roles: readonly RoleCode[]): RoleCode[] {
+  if (roles.length === 0) return [];
+  const maxLevel = Math.max(...roles.map((r) => ROLE_HIERARCHY[r] ?? 0));
+  return ROLES.filter((r) => ROLE_HIERARCHY[r] <= maxLevel);
+}
+
 export const CONSENT_TYPES = ["terms", "privacy", "marketing"] as const;
 
 export type ConsentType = (typeof CONSENT_TYPES)[number];
