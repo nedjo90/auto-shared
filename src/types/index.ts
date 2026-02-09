@@ -6,7 +6,19 @@ export type {
   IRegistrationInput,
   IRegistrationResult,
 } from "./user.js";
-export type { IConfigRegistrationField } from "./config.js";
+export type {
+  IConfigRegistrationField,
+  IConfigParameter,
+  IConfigText,
+  IConfigBoostFactor,
+  IConfigVehicleType,
+  IConfigListingDuration,
+  IConfigReportReason,
+  IConfigChatAction,
+  IConfigModerationRule,
+  IConfigApiProvider,
+  IConfigCache,
+} from "./config.js";
 export type {
   ConsentDecision,
   IConfigConsentType,
