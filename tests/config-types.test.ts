@@ -1,5 +1,8 @@
 import { describe, it, expect } from "vitest";
 import type {
+  ConfigParameterType,
+  ReportSeverity,
+  ApiProviderStatus,
   IConfigRegistrationField,
   IConfigParameter,
   IConfigText,
@@ -13,8 +16,15 @@ import type {
   IConfigCache,
 } from "../src/types/config";
 
+const MANAGED_FIELDS = {
+  createdAt: "2026-01-01T00:00:00Z",
+  createdBy: "admin",
+  modifiedAt: "2026-01-01T00:00:00Z",
+  modifiedBy: "admin",
+};
+
 describe("Config Types", () => {
-  it("should allow creating IConfigParameter", () => {
+  it("should allow creating IConfigParameter with managed fields", () => {
     const param: IConfigParameter = {
       ID: "p1",
       key: "listing.price.default",
@@ -22,21 +32,52 @@ describe("Config Types", () => {
       type: "decimal",
       category: "listing",
       description: "Default listing price",
+      ...MANAGED_FIELDS,
     };
     expect(param.key).toBe("listing.price.default");
     expect(param.type).toBe("decimal");
+    expect(param.createdAt).toBe("2026-01-01T00:00:00Z");
+    expect(param.modifiedBy).toBe("admin");
   });
 
-  it("should allow creating IConfigText", () => {
+  it("should allow nullable fields on IConfigParameter", () => {
+    const param: IConfigParameter = {
+      ID: "p2",
+      key: "test",
+      value: "v",
+      type: "string",
+      category: null,
+      description: null,
+      ...MANAGED_FIELDS,
+    };
+    expect(param.category).toBeNull();
+    expect(param.description).toBeNull();
+  });
+
+  it("should allow creating IConfigText with managed fields", () => {
     const text: IConfigText = {
       ID: "t1",
       key: "home.hero.title",
       language: "fr",
       value: "Trouvez votre vehicule",
       category: "homepage",
+      ...MANAGED_FIELDS,
     };
     expect(text.key).toBe("home.hero.title");
     expect(text.language).toBe("fr");
+    expect(text.createdBy).toBe("admin");
+  });
+
+  it("should allow nullable category on IConfigText", () => {
+    const text: IConfigText = {
+      ID: "t2",
+      key: "test",
+      language: "fr",
+      value: "Test",
+      category: null,
+      ...MANAGED_FIELDS,
+    };
+    expect(text.category).toBeNull();
   });
 
   it("should allow creating IConfigBoostFactor", () => {
@@ -45,6 +86,7 @@ describe("Config Types", () => {
       key: "photo.count.bonus",
       factor: 1.5,
       description: "Boost for listings with photos",
+      ...MANAGED_FIELDS,
     };
     expect(factor.factor).toBe(1.5);
   });
@@ -55,6 +97,7 @@ describe("Config Types", () => {
       key: "car",
       label: "Voiture",
       active: true,
+      ...MANAGED_FIELDS,
     };
     expect(vt.key).toBe("car");
     expect(vt.active).toBe(true);
@@ -67,17 +110,19 @@ describe("Config Types", () => {
       days: 30,
       label: "30 jours",
       active: true,
+      ...MANAGED_FIELDS,
     };
     expect(dur.days).toBe(30);
   });
 
-  it("should allow creating IConfigReportReason", () => {
+  it("should allow creating IConfigReportReason with typed severity", () => {
     const reason: IConfigReportReason = {
       ID: "r1",
       key: "spam",
       label: "Spam",
       severity: "low",
       active: true,
+      ...MANAGED_FIELDS,
     };
     expect(reason.severity).toBe("low");
   });
@@ -88,6 +133,7 @@ describe("Config Types", () => {
       key: "make.offer",
       label: "Faire une offre",
       active: true,
+      ...MANAGED_FIELDS,
     };
     expect(action.key).toBe("make.offer");
   });
@@ -99,11 +145,12 @@ describe("Config Types", () => {
       condition: "report_count >= 3",
       action: "flag_for_review",
       active: true,
+      ...MANAGED_FIELDS,
     };
     expect(rule.condition).toBe("report_count >= 3");
   });
 
-  it("should allow creating IConfigApiProvider", () => {
+  it("should allow creating IConfigApiProvider with typed status", () => {
     const provider: IConfigApiProvider = {
       ID: "ap1",
       key: "siv",
@@ -112,12 +159,14 @@ describe("Config Types", () => {
       costPerCall: 0.05,
       baseUrl: "https://api.siv.gouv.fr",
       active: true,
+      ...MANAGED_FIELDS,
     };
     expect(provider.adapterInterface).toBe("IVehicleDataAdapter");
     expect(provider.costPerCall).toBe(0.05);
+    expect(provider.status).toBe("active");
   });
 
-  it("should allow creating IConfigRegistrationField", () => {
+  it("should allow creating IConfigRegistrationField with managed fields", () => {
     const field: IConfigRegistrationField = {
       ID: "rf1",
       fieldName: "email",
@@ -128,8 +177,11 @@ describe("Config Types", () => {
       validationPattern: null,
       labelKey: "registration.email",
       placeholderKey: "registration.email.placeholder",
+      ...MANAGED_FIELDS,
     };
     expect(field.isRequired).toBe(true);
+    expect(field.validationPattern).toBeNull();
+    expect(field.createdAt).toBe("2026-01-01T00:00:00Z");
   });
 
   it("should export IConfigCache interface type", () => {
@@ -143,5 +195,28 @@ describe("Config Types", () => {
     };
     expect(mockCache.isReady()).toBe(true);
     expect(mockCache.getAll("test")).toEqual([]);
+    // Verify invalidate works with no args (optional parameter)
+    expect(() => mockCache.invalidate()).not.toThrow();
+    expect(() => mockCache.invalidate("ConfigParameter")).not.toThrow();
+  });
+
+  it("should enforce ConfigParameterType union at compile time", () => {
+    const types: ConfigParameterType[] = ["string", "integer", "decimal", "boolean"];
+    expect(types).toHaveLength(4);
+  });
+
+  it("should enforce ReportSeverity union at compile time", () => {
+    const severities: ReportSeverity[] = ["low", "medium", "high", "critical"];
+    expect(severities).toHaveLength(4);
+  });
+
+  it("should enforce ApiProviderStatus union at compile time", () => {
+    const statuses: ApiProviderStatus[] = ["active", "inactive", "deprecated"];
+    expect(statuses).toHaveLength(3);
+  });
+
+  it("should export all config types from barrel index", async () => {
+    const types = await import("../src/types/index");
+    expect(types).toBeDefined();
   });
 });

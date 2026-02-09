@@ -8,6 +8,10 @@ export interface IConfigProfileField {
   weight: number;
   tipKey: string | null;
   displayOrder: number;
+  createdAt: string;
+  createdBy: string;
+  modifiedAt: string;
+  modifiedBy: string;
 }
 
 export interface IProfileUpdateInput {

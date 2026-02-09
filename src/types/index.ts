@@ -7,6 +7,9 @@ export type {
   IRegistrationResult,
 } from "./user.js";
 export type {
+  ConfigParameterType,
+  ReportSeverity,
+  ApiProviderStatus,
   IConfigRegistrationField,
   IConfigParameter,
   IConfigText,

@@ -1,4 +1,21 @@
-export interface IConfigRegistrationField {
+/** Common audit fields from the CDS `managed` aspect. */
+interface IManagedFields {
+  createdAt: string;
+  createdBy: string;
+  modifiedAt: string;
+  modifiedBy: string;
+}
+
+/** Config parameter type values. */
+export type ConfigParameterType = "string" | "integer" | "decimal" | "boolean";
+
+/** Report severity levels. */
+export type ReportSeverity = "low" | "medium" | "high" | "critical";
+
+/** API provider status values. */
+export type ApiProviderStatus = "active" | "inactive" | "deprecated";
+
+export interface IConfigRegistrationField extends IManagedFields {
   ID: string;
   fieldName: string;
   fieldType: string;
@@ -10,16 +27,16 @@ export interface IConfigRegistrationField {
   placeholderKey: string;
 }
 
-export interface IConfigParameter {
+export interface IConfigParameter extends IManagedFields {
   ID: string;
   key: string;
   value: string;
-  type: string;
+  type: ConfigParameterType;
   category: string | null;
   description: string | null;
 }
 
-export interface IConfigText {
+export interface IConfigText extends IManagedFields {
   ID: string;
   key: string;
   language: string;
@@ -27,21 +44,21 @@ export interface IConfigText {
   category: string | null;
 }
 
-export interface IConfigBoostFactor {
+export interface IConfigBoostFactor extends IManagedFields {
   ID: string;
   key: string;
   factor: number;
   description: string | null;
 }
 
-export interface IConfigVehicleType {
+export interface IConfigVehicleType extends IManagedFields {
   ID: string;
   key: string;
   label: string;
   active: boolean;
 }
 
-export interface IConfigListingDuration {
+export interface IConfigListingDuration extends IManagedFields {
   ID: string;
   key: string;
   days: number;
@@ -49,22 +66,22 @@ export interface IConfigListingDuration {
   active: boolean;
 }
 
-export interface IConfigReportReason {
+export interface IConfigReportReason extends IManagedFields {
   ID: string;
   key: string;
   label: string;
-  severity: string;
+  severity: ReportSeverity;
   active: boolean;
 }
 
-export interface IConfigChatAction {
+export interface IConfigChatAction extends IManagedFields {
   ID: string;
   key: string;
   label: string;
   active: boolean;
 }
 
-export interface IConfigModerationRule {
+export interface IConfigModerationRule extends IManagedFields {
   ID: string;
   key: string;
   condition: string;
@@ -72,11 +89,11 @@ export interface IConfigModerationRule {
   active: boolean;
 }
 
-export interface IConfigApiProvider {
+export interface IConfigApiProvider extends IManagedFields {
   ID: string;
   key: string;
   adapterInterface: string;
-  status: string;
+  status: ApiProviderStatus;
   costPerCall: number;
   baseUrl: string;
   active: boolean;
