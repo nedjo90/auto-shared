@@ -32,3 +32,15 @@ export type {
   IPublicSellerProfile,
   ISellerRating,
 } from "./profile.js";
+export type {
+  ExportStatus,
+  AnonymizationStatus,
+  IDataExportRequest,
+  IAnonymizationRequest,
+  IDataExportRequestResult,
+  IExportDownloadResult,
+  IAnonymizationRequestResult,
+  IAnonymizationResult,
+  IDataExportSection,
+  IDataExportContent,
+} from "./rgpd.js";
