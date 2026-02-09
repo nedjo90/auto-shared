@@ -1,6 +1,6 @@
-export type ExportStatus = "pending" | "processing" | "ready" | "downloaded" | "expired";
+import type { ExportStatus, AnonymizationStatus, ExportSection } from "../constants/rgpd.js";
 
-export type AnonymizationStatus = "requested" | "confirmed" | "processing" | "completed" | "failed";
+export type { ExportStatus, AnonymizationStatus };
 
 export interface IDataExportRequest {
   ID: string;
@@ -26,7 +26,7 @@ export interface IAnonymizationRequest {
 export interface IDataExportRequestResult {
   requestId: string;
   status: ExportStatus;
-  estimatedCompletionMinutes: number;
+  estimatedCompletionMinutes: number | null;
 }
 
 export interface IExportDownloadResult {
@@ -39,15 +39,17 @@ export interface IAnonymizationRequestResult {
   requestId: string;
   status: AnonymizationStatus;
   message: string;
+  confirmationCode: string;
 }
 
 export interface IAnonymizationResult {
   success: boolean;
+  requestId: string;
   message: string;
 }
 
 export interface IDataExportSection {
-  section: string;
+  section: ExportSection;
   data: unknown;
 }
 

@@ -36,6 +36,26 @@ export const EXPORT_SECTIONS = [
 export type ExportSection = (typeof EXPORT_SECTIONS)[number];
 
 /**
+ * Valid statuses for data export requests.
+ */
+export const EXPORT_STATUSES = ["pending", "processing", "ready", "downloaded", "expired"] as const;
+
+export type ExportStatus = (typeof EXPORT_STATUSES)[number];
+
+/**
+ * Valid statuses for anonymization requests.
+ */
+export const ANONYMIZATION_STATUSES = [
+  "requested",
+  "confirmed",
+  "processing",
+  "completed",
+  "failed",
+] as const;
+
+export type AnonymizationStatus = (typeof ANONYMIZATION_STATUSES)[number];
+
+/**
  * Confirmation word the user must type to confirm anonymization.
  */
 export const ANONYMIZATION_CONFIRMATION_WORD = "ANONYMISER";
