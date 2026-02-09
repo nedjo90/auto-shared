@@ -18,6 +18,15 @@ describe("validateSirenLuhn", () => {
     expect(validateSirenLuhn("12345")).toBe(false);
     expect(validateSirenLuhn("1234567890")).toBe(false);
   });
+
+  it("should return false for non-numeric input", () => {
+    expect(validateSirenLuhn("abcdefghi")).toBe(false);
+    expect(validateSirenLuhn("12345678a")).toBe(false);
+  });
+
+  it("should validate known French SIREN (552032534 - Renault)", () => {
+    expect(validateSirenLuhn("552032534")).toBe(true);
+  });
 });
 
 describe("siretSchema", () => {
@@ -119,6 +128,68 @@ describe("profileUpdateInputSchema", () => {
     const result = profileUpdateInputSchema.safeParse({
       siret: "44306184100015",
     });
+    expect(result.success).toBe(true);
+  });
+
+  it("should reject phone with only '+' (no digits)", () => {
+    const result = profileUpdateInputSchema.safeParse({ phone: "+" });
+    expect(result.success).toBe(false);
+  });
+
+  it("should reject phone with only parentheses (no digits)", () => {
+    const result = profileUpdateInputSchema.safeParse({ phone: "()" });
+    expect(result.success).toBe(false);
+  });
+
+  it("should reject addressCountry with lowercase", () => {
+    const result = profileUpdateInputSchema.safeParse({ addressCountry: "fr" });
+    expect(result.success).toBe(false);
+  });
+
+  it("should reject addressCountry with 1 character", () => {
+    const result = profileUpdateInputSchema.safeParse({ addressCountry: "F" });
+    expect(result.success).toBe(false);
+  });
+
+  it("should accept valid addressCountry (FR)", () => {
+    const result = profileUpdateInputSchema.safeParse({ addressCountry: "FR" });
+    expect(result.success).toBe(true);
+  });
+
+  it("should reject displayName with whitespace only", () => {
+    const result = profileUpdateInputSchema.safeParse({ displayName: "   " });
+    expect(result.success).toBe(false);
+  });
+
+  it("should accept empty string for displayName", () => {
+    const result = profileUpdateInputSchema.safeParse({ displayName: "" });
+    expect(result.success).toBe(true);
+  });
+
+  it("should reject avatarUrl with http:// (non-https)", () => {
+    const result = profileUpdateInputSchema.safeParse({
+      avatarUrl: "http://example.com/avatar.jpg",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("should reject avatarUrl with javascript: protocol", () => {
+    const result = profileUpdateInputSchema.safeParse({
+      avatarUrl: "javascript:alert(1)",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("should trim whitespace from bio", () => {
+    const result = profileUpdateInputSchema.safeParse({ bio: "  Hello  " });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.bio).toBe("Hello");
+    }
+  });
+
+  it("should accept empty string for siret", () => {
+    const result = profileUpdateInputSchema.safeParse({ siret: "" });
     expect(result.success).toBe(true);
   });
 });

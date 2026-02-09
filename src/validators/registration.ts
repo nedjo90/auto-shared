@@ -16,10 +16,12 @@ export const registrationSchema = z.object({
 
 export type RegistrationInput = z.infer<typeof registrationSchema>;
 
+/** @deprecated Use profileUpdateInputSchema from profile.validator.ts instead */
 export const profileUpdateSchema = z.object({
   firstName: z.string().min(1).max(100).optional(),
   lastName: z.string().min(1).max(100).optional(),
   marketingOptIn: z.boolean().optional(),
 });
 
+/** @deprecated Use ProfileUpdateInput from profile.validator.ts instead */
 export type ProfileUpdateInput = z.infer<typeof profileUpdateSchema>;
