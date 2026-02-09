@@ -99,6 +99,21 @@ export interface IConfigApiProvider extends IManagedFields {
   active: boolean;
 }
 
+export interface IApiCallLog {
+  ID: string;
+  adapterInterface: string;
+  providerKey: string;
+  endpoint: string;
+  httpMethod: string;
+  httpStatus: number;
+  responseTimeMs: number;
+  cost: number;
+  listingId: string | null;
+  requestId: string | null;
+  errorMessage: string | null;
+  timestamp: string;
+}
+
 /**
  * Interface for config cache implementations.
  * Consumers can use this type without depending on the backend implementation.

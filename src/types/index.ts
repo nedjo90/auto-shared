@@ -20,6 +20,7 @@ export type {
   IConfigChatAction,
   IConfigModerationRule,
   IConfigApiProvider,
+  IApiCallLog,
   IConfigCache,
 } from "./config.js";
 export type {
