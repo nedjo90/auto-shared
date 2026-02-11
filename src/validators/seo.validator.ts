@@ -37,6 +37,10 @@ export const configSeoTemplateInputSchema = z.object({
     .string()
     .trim()
     .max(500, "L'URL canonique ne doit pas depasser 500 caracteres")
+    .refine(
+      (v) => v === "" || /^(\/|https:\/\/)/.test(v),
+      "L'URL canonique doit commencer par / ou https://",
+    )
     .optional()
     .default(""),
   language: z

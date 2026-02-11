@@ -141,5 +141,45 @@ describe("SEO Validators", () => {
       });
       expect(result.success).toBe(false);
     });
+
+    it("should accept canonicalUrlPattern starting with /", () => {
+      const result = configSeoTemplateInputSchema.safeParse({
+        ...validInput,
+        canonicalUrlPattern: "/annonces/{{id}}",
+      });
+      expect(result.success).toBe(true);
+    });
+
+    it("should accept canonicalUrlPattern starting with https://", () => {
+      const result = configSeoTemplateInputSchema.safeParse({
+        ...validInput,
+        canonicalUrlPattern: "https://auto.fr/annonces/{{id}}",
+      });
+      expect(result.success).toBe(true);
+    });
+
+    it("should reject canonicalUrlPattern with invalid protocol", () => {
+      const result = configSeoTemplateInputSchema.safeParse({
+        ...validInput,
+        canonicalUrlPattern: "javascript:alert(1)",
+      });
+      expect(result.success).toBe(false);
+    });
+
+    it("should reject canonicalUrlPattern with http://", () => {
+      const result = configSeoTemplateInputSchema.safeParse({
+        ...validInput,
+        canonicalUrlPattern: "http://auto.fr/test",
+      });
+      expect(result.success).toBe(false);
+    });
+
+    it("should accept empty canonicalUrlPattern", () => {
+      const result = configSeoTemplateInputSchema.safeParse({
+        ...validInput,
+        canonicalUrlPattern: "",
+      });
+      expect(result.success).toBe(true);
+    });
   });
 });

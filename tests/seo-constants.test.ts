@@ -4,7 +4,9 @@ import {
   SEO_PLACEHOLDERS,
   SEO_SAMPLE_DATA,
   SEO_CHAR_LIMITS,
+  renderSeoTemplate,
 } from "../src/constants/seo";
+import { seoPageTypeSchema } from "../src/validators/seo.validator";
 
 describe("SEO Constants", () => {
   describe("SEO_PAGE_TYPES", () => {
@@ -64,6 +66,16 @@ describe("SEO Constants", () => {
         }
       }
     });
+
+    it("should not have extra sample data keys beyond placeholders", () => {
+      for (const pageType of SEO_PAGE_TYPES) {
+        const placeholders = SEO_PLACEHOLDERS[pageType];
+        const sampleKeys = Object.keys(SEO_SAMPLE_DATA[pageType]);
+        for (const key of sampleKeys) {
+          expect(placeholders).toContain(key);
+        }
+      }
+    });
   });
 
   describe("SEO_CHAR_LIMITS", () => {
@@ -73,6 +85,33 @@ describe("SEO Constants", () => {
 
     it("should have meta description limit of 160", () => {
       expect(SEO_CHAR_LIMITS.metaDescription).toBe(160);
+    });
+  });
+
+  describe("Source of truth sync", () => {
+    it("should have SEO_PAGE_TYPES matching seoPageTypeSchema options", () => {
+      const schemaValues = seoPageTypeSchema.options;
+      expect([...SEO_PAGE_TYPES].sort()).toEqual([...schemaValues].sort());
+    });
+  });
+
+  describe("renderSeoTemplate", () => {
+    it("should replace placeholders with data values", () => {
+      expect(renderSeoTemplate("{{brand}} {{model}}", { brand: "Renault", model: "Clio" })).toBe(
+        "Renault Clio",
+      );
+    });
+
+    it("should remove unreplaced placeholders", () => {
+      expect(renderSeoTemplate("{{brand}} {{missing}}", { brand: "Renault" })).toBe("Renault ");
+    });
+
+    it("should return empty string for empty template", () => {
+      expect(renderSeoTemplate("", { brand: "Renault" })).toBe("");
+    });
+
+    it("should handle template with no placeholders", () => {
+      expect(renderSeoTemplate("Static text", {})).toBe("Static text");
     });
   });
 });
