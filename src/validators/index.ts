@@ -16,3 +16,5 @@ export {
   configAlertInputSchema,
 } from "./alert.validator.js";
 export type { ConfigAlertInput } from "./alert.validator.js";
+export { seoPageTypeSchema, configSeoTemplateInputSchema } from "./seo.validator.js";
+export type { ConfigSeoTemplateInput } from "./seo.validator.js";

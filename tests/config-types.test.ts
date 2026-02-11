@@ -3,6 +3,7 @@ import type {
   ConfigParameterType,
   ReportSeverity,
   ApiProviderStatus,
+  SeoPageType,
   IConfigRegistrationField,
   IConfigParameter,
   IConfigText,
@@ -13,6 +14,7 @@ import type {
   IConfigChatAction,
   IConfigModerationRule,
   IConfigApiProvider,
+  IConfigSeoTemplate,
   IConfigCache,
 } from "../src/types/config";
 
@@ -213,6 +215,37 @@ describe("Config Types", () => {
   it("should enforce ApiProviderStatus union at compile time", () => {
     const statuses: ApiProviderStatus[] = ["active", "inactive", "deprecated"];
     expect(statuses).toHaveLength(3);
+  });
+
+  it("should enforce SeoPageType union at compile time", () => {
+    const pageTypes: SeoPageType[] = [
+      "listing_detail",
+      "search_results",
+      "brand_page",
+      "model_page",
+      "city_page",
+      "landing_page",
+    ];
+    expect(pageTypes).toHaveLength(6);
+  });
+
+  it("should allow creating IConfigSeoTemplate with managed fields", () => {
+    const template: IConfigSeoTemplate = {
+      ID: "seo1",
+      pageType: "listing_detail",
+      metaTitleTemplate: "{{brand}} {{model}} - Auto",
+      metaDescriptionTemplate: "Achetez {{brand}} {{model}}",
+      ogTitleTemplate: "OG Title",
+      ogDescriptionTemplate: "OG Description",
+      canonicalUrlPattern: "/annonces/{{id}}",
+      language: "fr",
+      active: true,
+      ...MANAGED_FIELDS,
+    };
+    expect(template.pageType).toBe("listing_detail");
+    expect(template.language).toBe("fr");
+    expect(template.active).toBe(true);
+    expect(template.createdAt).toBe("2026-01-01T00:00:00Z");
   });
 
   it("should export all config types from barrel index", async () => {

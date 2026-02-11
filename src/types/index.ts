@@ -28,6 +28,8 @@ export type {
   IAlertEvent,
   IApiCallLog,
   IConfigCache,
+  SeoPageType,
+  IConfigSeoTemplate,
 } from "./config.js";
 export type {
   ConsentDecision,

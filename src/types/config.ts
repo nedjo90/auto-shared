@@ -32,6 +32,27 @@ export type AlertMetric =
   | "daily_listings"
   | "daily_revenue";
 
+/** SEO template page types. */
+export type SeoPageType =
+  | "listing_detail"
+  | "search_results"
+  | "brand_page"
+  | "model_page"
+  | "city_page"
+  | "landing_page";
+
+export interface IConfigSeoTemplate extends IManagedFields {
+  ID: string;
+  pageType: SeoPageType;
+  metaTitleTemplate: string;
+  metaDescriptionTemplate: string;
+  ogTitleTemplate: string;
+  ogDescriptionTemplate: string;
+  canonicalUrlPattern: string;
+  language: string;
+  active: boolean;
+}
+
 export interface IConfigRegistrationField extends IManagedFields {
   ID: string;
   fieldName: string;
