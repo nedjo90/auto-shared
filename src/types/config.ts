@@ -15,6 +15,23 @@ export type ReportSeverity = "low" | "medium" | "high" | "critical";
 /** API provider status values. */
 export type ApiProviderStatus = "active" | "inactive" | "deprecated";
 
+/** Alert comparison operators. */
+export type AlertComparisonOperator = "above" | "below" | "equals";
+
+/** Alert notification methods. */
+export type AlertNotificationMethod = "in_app" | "email" | "both";
+
+/** Alert severity levels. */
+export type AlertSeverityLevel = "info" | "warning" | "critical";
+
+/** Alert metric identifiers. */
+export type AlertMetric =
+  | "margin_per_listing"
+  | "api_availability"
+  | "daily_registrations"
+  | "daily_listings"
+  | "daily_revenue";
+
 export interface IConfigRegistrationField extends IManagedFields {
   ID: string;
   fieldName: string;
@@ -97,6 +114,33 @@ export interface IConfigApiProvider extends IManagedFields {
   costPerCall: number;
   baseUrl: string;
   active: boolean;
+}
+
+export interface IConfigAlert extends IManagedFields {
+  ID: string;
+  name: string;
+  metric: AlertMetric;
+  thresholdValue: number;
+  comparisonOperator: AlertComparisonOperator;
+  notificationMethod: AlertNotificationMethod;
+  severityLevel: AlertSeverityLevel;
+  enabled: boolean;
+  cooldownMinutes: number;
+  lastTriggeredAt: string | null;
+}
+
+export interface IAlertEvent {
+  ID: string;
+  alertId: string;
+  metric: string;
+  currentValue: number;
+  thresholdValue: number;
+  severity: AlertSeverityLevel;
+  message: string;
+  acknowledged: boolean;
+  acknowledgedBy: string | null;
+  acknowledgedAt: string | null;
+  createdAt: string;
 }
 
 export interface IApiCallLog {

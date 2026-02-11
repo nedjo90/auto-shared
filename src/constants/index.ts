@@ -21,3 +21,9 @@ export type {
   ExportStatus,
   AnonymizationStatus,
 } from "./rgpd.js";
+export {
+  ALERT_METRICS,
+  ALERT_COMPARISON_OPERATORS,
+  ALERT_NOTIFICATION_METHODS,
+  ALERT_SEVERITY_LEVELS,
+} from "./alerts.js";

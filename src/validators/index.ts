@@ -8,3 +8,11 @@ export {
 } from "./consent.validator.js";
 export { siretSchema, profileUpdateInputSchema, validateSirenLuhn } from "./profile.validator.js";
 export type { ProfileUpdateInput as ProfileUpdateInputValidated } from "./profile.validator.js";
+export {
+  alertComparisonOperatorSchema,
+  alertNotificationMethodSchema,
+  alertSeverityLevelSchema,
+  alertMetricSchema,
+  configAlertInputSchema,
+} from "./alert.validator.js";
+export type { ConfigAlertInput } from "./alert.validator.js";
