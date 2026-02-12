@@ -31,6 +31,6 @@ export {
   SEO_PAGE_TYPES,
   SEO_PLACEHOLDERS,
   SEO_SAMPLE_DATA,
+  SEO_PAGE_TYPE_LABELS,
   SEO_CHAR_LIMITS,
-  renderSeoTemplate,
 } from "./seo.js";

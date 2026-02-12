@@ -181,5 +181,36 @@ describe("SEO Validators", () => {
       });
       expect(result.success).toBe(true);
     });
+
+    it("should accept valid placeholders for page type", () => {
+      const result = configSeoTemplateInputSchema.safeParse({
+        ...validInput,
+        metaTitleTemplate: "{{brand}} {{model}} {{year}} - Auto",
+        metaDescriptionTemplate: "Achetez {{brand}} {{model}} a {{city}}",
+      });
+      expect(result.success).toBe(true);
+    });
+
+    it("should reject invalid placeholders for page type", () => {
+      const result = configSeoTemplateInputSchema.safeParse({
+        pageType: "brand_page",
+        metaTitleTemplate: "{{brand}} {{mileage}} - Auto",
+        metaDescriptionTemplate: "Desc for {{brand}}",
+      });
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        const messages = result.error.issues.map((i) => i.message);
+        expect(messages.some((m) => m.includes("mileage"))).toBe(true);
+      }
+    });
+
+    it("should accept placeholders valid for the specific page type", () => {
+      const result = configSeoTemplateInputSchema.safeParse({
+        pageType: "search_results",
+        metaTitleTemplate: "{{query}} - {{count}} resultats",
+        metaDescriptionTemplate: "Trouvez {{query}} a {{city}}",
+      });
+      expect(result.success).toBe(true);
+    });
   });
 });

@@ -4,8 +4,8 @@ import {
   SEO_PLACEHOLDERS,
   SEO_SAMPLE_DATA,
   SEO_CHAR_LIMITS,
-  renderSeoTemplate,
 } from "../src/constants/seo";
+import { renderSeoTemplate } from "../src/utils/seo";
 import { seoPageTypeSchema } from "../src/validators/seo.validator";
 
 describe("SEO Constants", () => {
