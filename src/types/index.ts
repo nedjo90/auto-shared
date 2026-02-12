@@ -1,3 +1,4 @@
+export type { IManagedFields } from "./common.js";
 export type {
   User,
   Role,

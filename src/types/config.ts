@@ -1,10 +1,4 @@
-/** Common audit fields from the CDS `managed` aspect. */
-interface IManagedFields {
-  createdAt: string;
-  createdBy: string;
-  modifiedAt: string;
-  modifiedBy: string;
-}
+import type { IManagedFields } from "./common.js";
 
 /** Config parameter type values. */
 export type ConfigParameterType = "string" | "integer" | "decimal" | "boolean";

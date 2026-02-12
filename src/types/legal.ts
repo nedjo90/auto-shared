@@ -1,10 +1,4 @@
-/** Common audit fields from the CDS `managed` aspect. */
-interface IManagedFields {
-  createdAt: string;
-  createdBy: string;
-  modifiedAt: string;
-  modifiedBy: string;
-}
+import type { IManagedFields } from "./common.js";
 
 /** Legal document key types (enum-like). */
 export type LegalDocumentKey = "cgu" | "cgv" | "privacy_policy" | "legal_notices";
@@ -36,7 +30,7 @@ export interface ILegalAcceptance extends IManagedFields {
   ID: string;
   user_ID: string;
   document_ID: string;
-  documentKey: string;
+  documentKey: LegalDocumentKey;
   version: number;
   acceptedAt: string;
   ipAddress: string | null;
