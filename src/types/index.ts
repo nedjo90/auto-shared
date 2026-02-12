@@ -76,3 +76,9 @@ export type {
   ITrendDataPoint,
   IKpiCardConfig,
 } from "./dashboard.js";
+export type {
+  LegalDocumentKey,
+  ILegalDocument,
+  ILegalDocumentVersion,
+  ILegalAcceptance,
+} from "./legal.js";

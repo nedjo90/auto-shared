@@ -34,3 +34,4 @@ export {
   SEO_PAGE_TYPE_LABELS,
   SEO_CHAR_LIMITS,
 } from "./seo.js";
+export { LEGAL_DOCUMENT_KEYS, LEGAL_DOCUMENT_LABELS } from "./legal.js";

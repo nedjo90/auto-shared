@@ -18,3 +18,9 @@ export {
 export type { ConfigAlertInput } from "./alert.validator.js";
 export { seoPageTypeSchema, configSeoTemplateInputSchema } from "./seo.validator.js";
 export type { ConfigSeoTemplateInput } from "./seo.validator.js";
+export {
+  legalDocumentKeySchema,
+  publishLegalVersionInputSchema,
+  acceptLegalDocumentInputSchema,
+} from "./legal.validator.js";
+export type { PublishLegalVersionInput, AcceptLegalDocumentInput } from "./legal.validator.js";
