@@ -31,6 +31,8 @@ export type {
   IConfigCache,
   SeoPageType,
   IConfigSeoTemplate,
+  AuditSeverity,
+  IAuditTrailEntry,
 } from "./config.js";
 export type {
   ConsentDecision,

@@ -35,3 +35,5 @@ export {
   SEO_CHAR_LIMITS,
 } from "./seo.js";
 export { LEGAL_DOCUMENT_KEYS, LEGAL_DOCUMENT_LABELS } from "./legal.js";
+export { AUDITABLE_ACTIONS, AUDIT_SEVERITY_LEVELS, AUDIT_ACTION_CATEGORIES } from "./audit.js";
+export type { AuditableAction } from "./audit.js";

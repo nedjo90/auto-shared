@@ -158,6 +158,25 @@ export interface IAlertEvent {
   createdAt: string;
 }
 
+/** Audit trail severity levels. */
+export type AuditSeverity = "info" | "warning" | "critical";
+
+/** Audit trail entry for tracking sensitive operations. */
+export interface IAuditTrailEntry {
+  ID: string;
+  action: string;
+  actorId: string;
+  actorRole: string;
+  targetType: string;
+  targetId: string | null;
+  timestamp: string;
+  details: string | null;
+  ipAddress: string | null;
+  userAgent: string | null;
+  requestId: string | null;
+  severity: AuditSeverity;
+}
+
 export interface IApiCallLog {
   ID: string;
   adapterInterface: string;
