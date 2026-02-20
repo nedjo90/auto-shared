@@ -112,3 +112,13 @@ export type {
   WebhookEventType,
   WebhookEvent,
 } from "./adapters.js";
+export type {
+  CertifiedFieldResult,
+  ApiSourceStatusState,
+  ApiSourceStatus,
+  IdentifierType,
+  AutoFillRequest,
+  AutoFillResponse,
+  ICertifiedField,
+  IApiCachedData,
+} from "./autofill.js";
