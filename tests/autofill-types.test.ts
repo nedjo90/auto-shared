@@ -6,6 +6,7 @@ import type {
   IdentifierType,
   AutoFillRequest,
   AutoFillResponse,
+  AutoFillResult,
   ICertifiedField,
   IApiCachedData,
 } from "../src/types/autofill";
@@ -60,8 +61,32 @@ describe("autofill types", () => {
     expect(req.identifierType).toBe("plate");
   });
 
-  it("should construct AutoFillResponse", () => {
+  it("should construct AutoFillResponse (wire format with JSON strings)", () => {
     const res: AutoFillResponse = {
+      fields: JSON.stringify([
+        {
+          fieldName: "make",
+          fieldValue: "Renault",
+          source: "SIV",
+          sourceTimestamp: "2026-01-01T00:00:00.000Z",
+          isCertified: true,
+        },
+      ]),
+      sources: JSON.stringify([
+        {
+          adapterInterface: "IVehicleLookupAdapter",
+          providerKey: "mock.vehicle-lookup",
+          status: "success",
+          responseTimeMs: 100,
+        },
+      ]),
+    };
+    expect(typeof res.fields).toBe("string");
+    expect(JSON.parse(res.fields)).toHaveLength(1);
+  });
+
+  it("should construct AutoFillResult (parsed format with typed arrays)", () => {
+    const result: AutoFillResult = {
       fields: [
         {
           fieldName: "make",
@@ -80,8 +105,8 @@ describe("autofill types", () => {
         },
       ],
     };
-    expect(res.fields).toHaveLength(1);
-    expect(res.sources).toHaveLength(1);
+    expect(result.fields).toHaveLength(1);
+    expect(result.sources).toHaveLength(1);
   });
 
   it("should construct ICertifiedField", () => {

@@ -28,8 +28,19 @@ export interface AutoFillRequest {
   identifierType: IdentifierType;
 }
 
-/** Output of the autoFillByPlate action. */
+/**
+ * Output of the autoFill action (supports both plate and VIN).
+ * NOTE: The CDS action returns fields/sources as LargeString (JSON).
+ * This interface represents the **wire format**. Consumers must
+ * JSON.parse() fields and sources to get the typed arrays.
+ */
 export interface AutoFillResponse {
+  fields: string;
+  sources: string;
+}
+
+/** Parsed/deserialized auto-fill result with typed arrays. */
+export interface AutoFillResult {
   fields: CertifiedFieldResult[];
   sources: ApiSourceStatus[];
 }

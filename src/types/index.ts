@@ -119,6 +119,7 @@ export type {
   IdentifierType,
   AutoFillRequest,
   AutoFillResponse,
+  AutoFillResult,
   ICertifiedField,
   IApiCachedData,
 } from "./autofill.js";
