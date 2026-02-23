@@ -127,7 +127,6 @@ export type {
   IListing,
   FieldStatus,
   ListingFieldState,
-  UpdateListingFieldInput,
   UpdateListingFieldResult,
   ICertifiedFieldHistory,
 } from "./listing.js";

@@ -31,10 +31,17 @@ export {
   listingConditionSchema,
   listingTransmissionSchema,
   listingDriveTypeSchema,
+  listingMakeSchema,
+  listingModelSchema,
+  listingYearSchema,
+  listingFuelTypeSchema,
   updateListingFieldSchema,
   validateListingField,
 } from "./listing.validator.js";
-export type { UpdateListingFieldInput as UpdateListingFieldValidated } from "./listing.validator.js";
+export type {
+  UpdateListingFieldInput,
+  UpdateListingFieldInput as UpdateListingFieldValidated,
+} from "./listing.validator.js";
 export {
   PLATE_REGEX,
   VIN_REGEX,

@@ -75,13 +75,6 @@ export interface ListingFieldState {
   originalCertifiedValue?: string;
 }
 
-/** Input for updating a single listing field. */
-export interface UpdateListingFieldInput {
-  listingId: string;
-  fieldName: string;
-  value: string;
-}
-
 /** Result of updating a listing field. */
 export interface UpdateListingFieldResult {
   fieldName: string;

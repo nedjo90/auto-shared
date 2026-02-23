@@ -3,10 +3,10 @@ import type {
   IListing,
   FieldStatus,
   ListingFieldState,
-  UpdateListingFieldInput,
   UpdateListingFieldResult,
   ICertifiedFieldHistory,
 } from "../src/types/listing";
+import type { UpdateListingFieldInput } from "../src/validators/listing.validator";
 
 describe("listing types", () => {
   it("should allow creating an IListing object", () => {
