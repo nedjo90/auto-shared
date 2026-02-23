@@ -54,6 +54,7 @@ export interface IListing {
   // Status
   status: string;
   visibilityScore: number;
+  visibilityLabel: string;
 
   // Managed
   createdAt?: string;
@@ -81,6 +82,8 @@ export interface UpdateListingFieldResult {
   value: string;
   status: FieldStatus;
   visibilityScore: number;
+  visibilityLabel: string;
+  suggestions: string; // JSON array of ScoreSuggestion
   previousCertifiedValue?: string;
 }
 

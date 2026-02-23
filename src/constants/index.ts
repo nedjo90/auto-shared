@@ -53,3 +53,11 @@ export {
   PHOTO_DEFAULT_MAX_SIZE_BYTES,
   PHOTO_VISIBILITY_WEIGHT,
 } from "./listing.js";
+export {
+  VISIBILITY_CONFIG_PREFIX,
+  VISIBILITY_CONFIG_KEYS,
+  DEFAULT_VISIBILITY_WEIGHTS,
+  VISIBILITY_LABELS,
+  VISIBILITY_SUGGESTIONS,
+} from "./visibility-score.js";
+export type { VisibilityLabel } from "./visibility-score.js";

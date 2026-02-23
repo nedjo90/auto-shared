@@ -134,3 +134,9 @@ export type {
   UploadPhotoResult,
   ReorderPhotosInput,
 } from "./listing.js";
+export type {
+  ScoreSuggestion,
+  VisibilityScoreResult,
+  VisibilityScoreInput,
+  VisibilityScoreWeights,
+} from "./visibility-score.js";
