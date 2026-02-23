@@ -35,7 +35,5 @@ export const consentInputSchema = z.object({
  * Validates a batch consent input.
  */
 export const consentBatchInputSchema = z.object({
-  consents: z
-    .array(consentInputSchema)
-    .min(1, "Au moins un consentement requis"),
+  consents: z.array(consentInputSchema).min(1, "Au moins un consentement requis"),
 });

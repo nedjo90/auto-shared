@@ -36,9 +36,7 @@ export function buildRegistrationSchema(fields: IConfigRegistrationField[]) {
   }
 
   // Fixed fields (not config-driven)
-  shape.password = z
-    .string()
-    .min(8, "Le mot de passe doit contenir au moins 8 caractères");
+  shape.password = z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères");
 
   return z.object(shape);
 }
