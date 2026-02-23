@@ -24,3 +24,14 @@ export {
   acceptLegalDocumentInputSchema,
 } from "./legal.validator.js";
 export type { PublishLegalVersionInput, AcceptLegalDocumentInput } from "./legal.validator.js";
+export {
+  listingPriceSchema,
+  listingMileageSchema,
+  listingDescriptionSchema,
+  listingConditionSchema,
+  listingTransmissionSchema,
+  listingDriveTypeSchema,
+  updateListingFieldSchema,
+  validateListingField,
+} from "./listing.validator.js";
+export type { UpdateListingFieldInput as UpdateListingFieldValidated } from "./listing.validator.js";
