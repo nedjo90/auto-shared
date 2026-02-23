@@ -128,6 +128,7 @@ export type {
   FieldStatus,
   ListingFieldState,
   UpdateListingFieldResult,
+  SaveDraftResult,
   ICertifiedFieldHistory,
   IListingPhoto,
   PhotoMimeType,

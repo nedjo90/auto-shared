@@ -55,6 +55,7 @@ export interface IListing {
   status: string;
   visibilityScore: number;
   visibilityLabel: string;
+  completionPercentage: number;
 
   // Managed
   createdAt?: string;
@@ -125,6 +126,15 @@ export interface UploadPhotoResult {
 export interface ReorderPhotosInput {
   listingId: string;
   photoIds: string[];
+}
+
+/** Result of saving a draft. */
+export interface SaveDraftResult {
+  listingId: string;
+  success: boolean;
+  completionPercentage: number;
+  visibilityScore: number;
+  visibilityLabel: string;
 }
 
 /** Certified field history record. */

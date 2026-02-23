@@ -4,6 +4,7 @@ import type {
   FieldStatus,
   ListingFieldState,
   UpdateListingFieldResult,
+  SaveDraftResult,
   ICertifiedFieldHistory,
 } from "../src/types/listing";
 import type { UpdateListingFieldInput } from "../src/validators/listing.validator";
@@ -53,9 +54,12 @@ describe("listing types", () => {
       plantCountry: "France",
       status: "draft",
       visibilityScore: 75,
+      visibilityLabel: "Très documenté",
+      completionPercentage: 60,
     };
     expect(listing.ID).toBe("test-id");
     expect(listing.status).toBe("draft");
+    expect(listing.completionPercentage).toBe(60);
   });
 
   it("should support all FieldStatus values", () => {
@@ -100,6 +104,8 @@ describe("listing types", () => {
       value: "15000",
       status: "declared",
       visibilityScore: 80,
+      visibilityLabel: "Très documenté",
+      suggestions: "[]",
     };
     expect(result.status).toBe("declared");
     expect(result.visibilityScore).toBe(80);
@@ -111,9 +117,24 @@ describe("listing types", () => {
       value: "55000",
       status: "declared",
       visibilityScore: 75,
+      visibilityLabel: "Très documenté",
+      suggestions: "[]",
       previousCertifiedValue: "50000",
     };
     expect(result.previousCertifiedValue).toBe("50000");
+  });
+
+  it("should allow creating a SaveDraftResult", () => {
+    const result: SaveDraftResult = {
+      listingId: "listing-1",
+      success: true,
+      completionPercentage: 45,
+      visibilityScore: 60,
+      visibilityLabel: "Bien documenté",
+    };
+    expect(result.success).toBe(true);
+    expect(result.completionPercentage).toBe(45);
+    expect(result.visibilityScore).toBe(60);
   });
 
   it("should allow creating an ICertifiedFieldHistory", () => {
