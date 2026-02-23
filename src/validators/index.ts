@@ -52,3 +52,5 @@ export {
   parseAutoFillResponse,
 } from "./autofill.validator.js";
 export type { AutoFillRequestValidated } from "./autofill.validator.js";
+export { photoMimeTypeSchema, reorderPhotosInputSchema } from "./photo.validator.js";
+export type { ReorderPhotosInputValidated } from "./photo.validator.js";

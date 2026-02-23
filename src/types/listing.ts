@@ -84,6 +84,46 @@ export interface UpdateListingFieldResult {
   previousCertifiedValue?: string;
 }
 
+// ─── Listing Photo (Story 3-4) ──────────────────────────────────────────
+
+/** Photo attached to a listing. */
+export interface IListingPhoto {
+  ID: string;
+  listingId: string;
+  blobUrl: string;
+  cdnUrl: string;
+  sortOrder: number;
+  isPrimary: boolean;
+  fileSize: number;
+  mimeType: string;
+  width: number;
+  height: number;
+  uploadedAt: string;
+  createdAt?: string;
+  modifiedAt?: string;
+}
+
+/** Allowed MIME types for photo upload. */
+export type PhotoMimeType = "image/jpeg" | "image/png" | "image/webp" | "image/heic";
+
+/** Result of a photo upload action. */
+export interface UploadPhotoResult {
+  ID: string;
+  cdnUrl: string;
+  sortOrder: number;
+  isPrimary: boolean;
+  fileSize: number;
+  mimeType: string;
+  width: number;
+  height: number;
+}
+
+/** Input for reordering photos. */
+export interface ReorderPhotosInput {
+  listingId: string;
+  photoIds: string[];
+}
+
 /** Certified field history record. */
 export interface ICertifiedFieldHistory {
   ID: string;

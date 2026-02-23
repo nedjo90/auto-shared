@@ -358,3 +358,22 @@ export const LISTING_VALIDATION = {
   transmission: { values: ["manuelle", "automatique"] as const },
   driveType: { values: ["traction", "propulsion", "integrale"] as const },
 } as const;
+
+// ─── Photo Constants (Story 3-4) ──────────────────────────────────────────
+
+/** Allowed MIME types for photo upload. */
+export const PHOTO_ALLOWED_MIME_TYPES = [
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/heic",
+] as const;
+
+/** Default max photos per listing (overridable via ConfigParameter MAX_PHOTOS). */
+export const PHOTO_DEFAULT_MAX = 20;
+
+/** Default max file size in bytes (overridable via ConfigParameter MAX_PHOTO_SIZE_BYTES). */
+export const PHOTO_DEFAULT_MAX_SIZE_BYTES = 10 * 1024 * 1024; // 10MB raw upload limit
+
+/** Photo weight in visibility score calculation. */
+export const PHOTO_VISIBILITY_WEIGHT = 10;

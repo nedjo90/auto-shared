@@ -129,4 +129,8 @@ export type {
   ListingFieldState,
   UpdateListingFieldResult,
   ICertifiedFieldHistory,
+  IListingPhoto,
+  PhotoMimeType,
+  UploadPhotoResult,
+  ReorderPhotosInput,
 } from "./listing.js";

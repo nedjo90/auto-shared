@@ -47,3 +47,9 @@ export {
   LISTING_VALIDATION,
 } from "./listing.js";
 export type { FieldCategory, FieldType, ListingFieldMeta, ListingCondition } from "./listing.js";
+export {
+  PHOTO_ALLOWED_MIME_TYPES,
+  PHOTO_DEFAULT_MAX,
+  PHOTO_DEFAULT_MAX_SIZE_BYTES,
+  PHOTO_VISIBILITY_WEIGHT,
+} from "./listing.js";
