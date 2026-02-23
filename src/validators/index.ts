@@ -35,3 +35,13 @@ export {
   validateListingField,
 } from "./listing.validator.js";
 export type { UpdateListingFieldInput as UpdateListingFieldValidated } from "./listing.validator.js";
+export {
+  PLATE_REGEX,
+  VIN_REGEX,
+  identifierTypeSchema,
+  autoFillRequestSchema,
+  certifiedFieldResultSchema,
+  apiSourceStatusSchema,
+  parseAutoFillResponse,
+} from "./autofill.validator.js";
+export type { AutoFillRequestValidated } from "./autofill.validator.js";
