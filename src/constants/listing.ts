@@ -359,6 +359,50 @@ export const LISTING_VALIDATION = {
   driveType: { values: ["traction", "propulsion", "integrale"] as const },
 } as const;
 
+// ─── Card Display Config (Story 4-1) ──────────────────────────────────────
+
+import type { CardFieldType } from "../types/listing.js";
+
+/** Default fields displayed on listing cards (order matters). */
+export interface DefaultCardField {
+  fieldName: string;
+  displayOrder: number;
+  labelFr: string;
+  labelEn: string;
+  fieldType: CardFieldType;
+}
+
+export const DEFAULT_CARD_FIELDS: readonly DefaultCardField[] = [
+  { fieldName: "price", displayOrder: 1, labelFr: "Prix", labelEn: "Price", fieldType: "price" },
+  { fieldName: "make", displayOrder: 2, labelFr: "Marque", labelEn: "Make", fieldType: "text" },
+  { fieldName: "model", displayOrder: 3, labelFr: "Modèle", labelEn: "Model", fieldType: "text" },
+  { fieldName: "year", displayOrder: 4, labelFr: "Année", labelEn: "Year", fieldType: "text" },
+  {
+    fieldName: "mileage",
+    displayOrder: 5,
+    labelFr: "Kilométrage",
+    labelEn: "Mileage",
+    fieldType: "text",
+  },
+  {
+    fieldName: "fuelType",
+    displayOrder: 6,
+    labelFr: "Carburant",
+    labelEn: "Fuel Type",
+    fieldType: "badge",
+  },
+  {
+    fieldName: "visibilityLabel",
+    displayOrder: 7,
+    labelFr: "Certification",
+    labelEn: "Certification",
+    fieldType: "badge",
+  },
+] as const;
+
+/** Pagination defaults for listing search. */
+export const LISTING_PAGE_SIZE = 20;
+
 // ─── Photo Constants (Story 3-4) ──────────────────────────────────────────
 
 /** Allowed MIME types for photo upload. */

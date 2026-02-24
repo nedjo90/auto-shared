@@ -47,8 +47,16 @@ export {
   CERTIFIABLE_FIELDS,
   DECLARED_ONLY_FIELDS,
   LISTING_VALIDATION,
+  DEFAULT_CARD_FIELDS,
+  LISTING_PAGE_SIZE,
 } from "./listing.js";
-export type { FieldCategory, FieldType, ListingFieldMeta, ListingCondition } from "./listing.js";
+export type {
+  FieldCategory,
+  FieldType,
+  ListingFieldMeta,
+  ListingCondition,
+  DefaultCardField,
+} from "./listing.js";
 export {
   PHOTO_ALLOWED_MIME_TYPES,
   PHOTO_DEFAULT_MAX,

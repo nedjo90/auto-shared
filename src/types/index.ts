@@ -149,6 +149,11 @@ export type {
   ISellerListingHistoryItem,
   IListingLifecycleResult,
   ISellerPublishedListing,
+  CardFieldType,
+  IConfigListingCard,
+  IPublicListingCard,
+  IListingPage,
+  IPublicListingDetail,
 } from "./listing.js";
 export type {
   ScoreSuggestion,

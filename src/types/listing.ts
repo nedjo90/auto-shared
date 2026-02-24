@@ -194,6 +194,107 @@ export interface IListingLifecycleResult {
   timestamp: string;
 }
 
+// ─── Listing Card Config (Story 4-1) ──────────────────────────────────────
+
+/** Field type for card display. */
+export type CardFieldType = "text" | "badge" | "price" | "location";
+
+/** Configuration for which fields appear on listing cards. */
+export interface IConfigListingCard {
+  ID: string;
+  fieldName: string;
+  displayOrder: number;
+  isVisible: boolean;
+  labelFr: string;
+  labelEn: string;
+  fieldType: CardFieldType;
+  createdAt?: string;
+  modifiedAt?: string;
+}
+
+/** Public listing card data for marketplace browsing. */
+export interface IPublicListingCard {
+  ID: string;
+  make: string | null;
+  model: string | null;
+  variant: string | null;
+  year: number | null;
+  price: number | null;
+  mileage: number | null;
+  fuelType: string | null;
+  gearbox: string | null;
+  bodyType: string | null;
+  color: string | null;
+  condition: string | null;
+  visibilityScore: number;
+  visibilityLabel: string;
+  publishedAt: string | null;
+  primaryPhotoUrl: string | null;
+  photoCount: number;
+  certifiedFieldCount: number;
+  totalFieldCount: number;
+  sellerId: string;
+}
+
+/** Paginated listing response for infinite scroll. */
+export interface IListingPage {
+  items: IPublicListingCard[];
+  total: number;
+  skip: number;
+  top: number;
+  hasMore: boolean;
+}
+
+/** Public listing detail with full information. */
+export interface IPublicListingDetail {
+  ID: string;
+  make: string | null;
+  model: string | null;
+  variant: string | null;
+  year: number | null;
+  price: number | null;
+  mileage: number | null;
+  fuelType: string | null;
+  engineCapacityCc: number | null;
+  powerKw: number | null;
+  powerHp: number | null;
+  gearbox: string | null;
+  bodyType: string | null;
+  doors: number | null;
+  seats: number | null;
+  color: string | null;
+  co2GKm: number | null;
+  euroNorm: string | null;
+  energyClass: string | null;
+  critAirLevel: string | null;
+  critAirLabel: string | null;
+  condition: string | null;
+  description: string | null;
+  options: string | null;
+  interiorColor: string | null;
+  exteriorColor: string | null;
+  transmission: string | null;
+  driveType: string | null;
+  registrationDate: string | null;
+  status: string;
+  visibilityScore: number;
+  visibilityLabel: string;
+  publishedAt: string | null;
+  soldAt: string | null;
+  sellerId: string;
+  photos: IListingPhoto[];
+  certifiedFields: {
+    fieldName: string;
+    source: string;
+    isCertified: boolean;
+  }[];
+  hasHistoryReport: boolean;
+  analytics: {
+    viewCount: number;
+    favoriteCount: number;
+  };
+}
+
 /** Seller listings response (active published listings). */
 export interface ISellerPublishedListing {
   ID: string;
