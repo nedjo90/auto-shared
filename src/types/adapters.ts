@@ -150,6 +150,12 @@ export interface HistoryAccident {
   description: string;
 }
 
+export interface HistoryRegistration {
+  date: string;
+  department: string;
+  region: string;
+}
+
 export interface HistoryResponse {
   vin: string;
   ownerCount: number;
@@ -157,6 +163,8 @@ export interface HistoryResponse {
   lastRegistrationDate: string;
   mileageRecords: HistoryMileageRecord[];
   accidents: HistoryAccident[];
+  registrationHistory: HistoryRegistration[];
+  outstandingFinance: boolean;
   stolen: boolean;
   totalDamageCount: number;
   provider: AdapterProviderMeta;

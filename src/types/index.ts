@@ -103,6 +103,7 @@ export type {
   HistoryRequest,
   HistoryMileageRecord,
   HistoryAccident,
+  HistoryRegistration,
   HistoryResponse,
   ValuationRequest,
   ValuationResponse,
@@ -141,3 +142,10 @@ export type {
   VisibilityScoreInput,
   VisibilityScoreWeights,
 } from "./visibility-score.js";
+export type {
+  IPaymentTransaction,
+  IPublishableListing,
+  IBatchTotal,
+  ICheckoutSessionResult,
+  IPaymentSessionStatus,
+} from "./payment.js";

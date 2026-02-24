@@ -54,3 +54,5 @@ export {
 export type { AutoFillRequestValidated } from "./autofill.validator.js";
 export { photoMimeTypeSchema, reorderPhotosInputSchema } from "./photo.validator.js";
 export type { ReorderPhotosInputValidated } from "./photo.validator.js";
+export { batchPublishRequestSchema, checkoutSessionRequestSchema } from "./payment.validator.js";
+export type { BatchPublishRequest, CheckoutSessionRequest } from "./payment.validator.js";
