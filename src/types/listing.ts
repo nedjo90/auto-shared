@@ -1,6 +1,7 @@
 // ─── Listing DTOs (Story 3-3) ─────────────────────────────────────────────
 
 import type { ListingCondition } from "../constants/listing.js";
+import type { ListingStatus } from "../constants/roles.js";
 
 /** Full listing entity shape. */
 export interface IListing {
@@ -51,8 +52,14 @@ export interface IListing {
   vehicleType: string | null;
   plantCountry: string | null;
 
+  // Lifecycle timestamps
+  publishedAt: string | null;
+  soldAt: string | null;
+  archivedAt: string | null;
+  declarationId: string | null;
+
   // Status
-  status: string;
+  status: ListingStatus;
   visibilityScore: number;
   visibilityLabel: string;
   completionPercentage: number;
@@ -166,7 +173,7 @@ export interface ISellerListingHistoryItem {
   model: string | null;
   year: number | null;
   price: number | null;
-  status: string;
+  status: ListingStatus;
   visibilityScore: number;
   publishedAt: string | null;
   soldAt: string | null;
@@ -183,7 +190,7 @@ export interface ISellerListingHistoryItem {
 export interface IListingLifecycleResult {
   success: boolean;
   listingId: string;
-  newStatus: string;
+  newStatus: ListingStatus;
   timestamp: string;
 }
 
@@ -194,13 +201,13 @@ export interface ISellerPublishedListing {
   model: string | null;
   year: number | null;
   price: number | null;
-  status: string;
+  status: ListingStatus;
   visibilityScore: number;
   publishedAt: string | null;
   viewCount: number;
   favoriteCount: number;
   chatCount: number;
-  daysOnMarket: number;
+  daysOnMarket: number | null;
   photoCount: number;
   primaryPhotoUrl: string | null;
 }
