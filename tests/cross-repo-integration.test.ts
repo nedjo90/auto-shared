@@ -14,9 +14,9 @@ describe("Cross-repo integration", () => {
     });
 
     it("should have node_modules/@auto/shared in backend", () => {
-      expect(
-        fs.existsSync(path.join(rootDir, "auto-backend/node_modules/@auto/shared")),
-      ).toBe(true);
+      expect(fs.existsSync(path.join(rootDir, "auto-backend/node_modules/@auto/shared"))).toBe(
+        true,
+      );
     });
   });
 
@@ -29,9 +29,9 @@ describe("Cross-repo integration", () => {
     });
 
     it("should have node_modules/@auto/shared in frontend", () => {
-      expect(
-        fs.existsSync(path.join(rootDir, "auto-frontend/node_modules/@auto/shared")),
-      ).toBe(true);
+      expect(fs.existsSync(path.join(rootDir, "auto-frontend/node_modules/@auto/shared"))).toBe(
+        true,
+      );
     });
   });
 
