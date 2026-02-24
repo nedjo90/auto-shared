@@ -54,3 +54,20 @@ export const LISTING_STATUS = [
 ] as const;
 
 export type ListingStatus = (typeof LISTING_STATUS)[number];
+
+/** Valid status transitions for listings (state machine). */
+export const LISTING_STATUS_TRANSITIONS: Readonly<Record<ListingStatus, readonly ListingStatus[]>> =
+  {
+    draft: ["published"],
+    pending_review: ["published", "rejected"],
+    published: ["sold", "archived"],
+    rejected: ["draft", "archived"],
+    expired: ["archived"],
+    sold: ["archived"],
+    archived: [],
+  } as const;
+
+/** Check if a listing status transition is valid. */
+export function isValidListingTransition(from: ListingStatus, to: ListingStatus): boolean {
+  return (LISTING_STATUS_TRANSITIONS[from] ?? []).includes(to);
+}

@@ -147,3 +147,60 @@ export interface ICertifiedFieldHistory {
   overriddenAt: string;
   overriddenBy: string;
 }
+
+// ─── Listing Lifecycle (Story 3-10) ──────────────────────────────────────
+
+/** Performance analytics for a listing. */
+export interface IListingAnalytics {
+  ID: string;
+  listingId: string;
+  viewCount: number;
+  favoriteCount: number;
+  chatCount: number;
+}
+
+/** Seller listing history item with performance metrics. */
+export interface ISellerListingHistoryItem {
+  ID: string;
+  make: string | null;
+  model: string | null;
+  year: number | null;
+  price: number | null;
+  status: string;
+  visibilityScore: number;
+  publishedAt: string | null;
+  soldAt: string | null;
+  archivedAt: string | null;
+  viewCount: number;
+  favoriteCount: number;
+  chatCount: number;
+  daysOnMarket: number | null;
+  photoCount: number;
+  primaryPhotoUrl: string | null;
+}
+
+/** Result of a listing lifecycle action (markAsSold, archiveListing). */
+export interface IListingLifecycleResult {
+  success: boolean;
+  listingId: string;
+  newStatus: string;
+  timestamp: string;
+}
+
+/** Seller listings response (active published listings). */
+export interface ISellerPublishedListing {
+  ID: string;
+  make: string | null;
+  model: string | null;
+  year: number | null;
+  price: number | null;
+  status: string;
+  visibilityScore: number;
+  publishedAt: string | null;
+  viewCount: number;
+  favoriteCount: number;
+  chatCount: number;
+  daysOnMarket: number;
+  photoCount: number;
+  primaryPhotoUrl: string | null;
+}

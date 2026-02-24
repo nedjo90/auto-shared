@@ -135,6 +135,10 @@ export type {
   PhotoMimeType,
   UploadPhotoResult,
   ReorderPhotosInput,
+  IListingAnalytics,
+  ISellerListingHistoryItem,
+  IListingLifecycleResult,
+  ISellerPublishedListing,
 } from "./listing.js";
 export type {
   ScoreSuggestion,

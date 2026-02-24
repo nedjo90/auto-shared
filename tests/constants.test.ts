@@ -3,6 +3,8 @@ import {
   ROLES,
   CONSENT_TYPES,
   LISTING_STATUS,
+  LISTING_STATUS_TRANSITIONS,
+  isValidListingTransition,
   expandRolesWithHierarchy,
 } from "../src/constants/index.js";
 
@@ -79,6 +81,58 @@ describe("Constants", () => {
     it("should handle duplicate roles in input", () => {
       const result = expandRolesWithHierarchy(["seller", "seller"]);
       expect(result).toEqual(["visitor", "buyer", "seller"]);
+    });
+  });
+
+  describe("LISTING_STATUS_TRANSITIONS", () => {
+    it("should define transitions for all listing statuses", () => {
+      for (const status of LISTING_STATUS) {
+        expect(LISTING_STATUS_TRANSITIONS).toHaveProperty(status);
+        expect(Array.isArray(LISTING_STATUS_TRANSITIONS[status])).toBe(true);
+      }
+    });
+
+    it("should allow draft -> published", () => {
+      expect(LISTING_STATUS_TRANSITIONS.draft).toContain("published");
+    });
+
+    it("should allow published -> sold and published -> archived", () => {
+      expect(LISTING_STATUS_TRANSITIONS.published).toContain("sold");
+      expect(LISTING_STATUS_TRANSITIONS.published).toContain("archived");
+    });
+
+    it("should allow sold -> archived", () => {
+      expect(LISTING_STATUS_TRANSITIONS.sold).toContain("archived");
+    });
+
+    it("should not allow archived -> anything", () => {
+      expect(LISTING_STATUS_TRANSITIONS.archived).toHaveLength(0);
+    });
+
+    it("should not allow draft -> sold directly", () => {
+      expect(LISTING_STATUS_TRANSITIONS.draft).not.toContain("sold");
+    });
+  });
+
+  describe("isValidListingTransition", () => {
+    it("should return true for valid transitions", () => {
+      expect(isValidListingTransition("draft", "published")).toBe(true);
+      expect(isValidListingTransition("published", "sold")).toBe(true);
+      expect(isValidListingTransition("published", "archived")).toBe(true);
+      expect(isValidListingTransition("sold", "archived")).toBe(true);
+    });
+
+    it("should return false for invalid transitions", () => {
+      expect(isValidListingTransition("draft", "sold")).toBe(false);
+      expect(isValidListingTransition("draft", "archived")).toBe(false);
+      expect(isValidListingTransition("archived", "published")).toBe(false);
+      expect(isValidListingTransition("sold", "published")).toBe(false);
+      expect(isValidListingTransition("archived", "draft")).toBe(false);
+    });
+
+    it("should return false for same-status transition", () => {
+      expect(isValidListingTransition("published", "published")).toBe(false);
+      expect(isValidListingTransition("draft", "draft")).toBe(false);
     });
   });
 });

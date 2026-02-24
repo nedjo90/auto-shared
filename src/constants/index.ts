@@ -5,6 +5,8 @@ export {
   PERMISSION_CODES,
   CONSENT_TYPES,
   LISTING_STATUS,
+  LISTING_STATUS_TRANSITIONS,
+  isValidListingTransition,
   expandRolesWithHierarchy,
 } from "./roles.js";
 export type { ConsentType, ListingStatus } from "./roles.js";
