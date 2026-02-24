@@ -28,6 +28,7 @@ export type {
   IConfigAlert,
   IAlertEvent,
   IApiCallLog,
+  IApiProviderHealth,
   IConfigCache,
   SeoPageType,
   IConfigSeoTemplate,
@@ -88,6 +89,11 @@ export type {
 export type {
   AdapterProviderMeta,
   AdapterError,
+  AdapterErrorType,
+  AdapterTypedError,
+  CircuitBreakerState,
+  ICircuitBreakerConfig,
+  ICircuitBreakerStatus,
   VehicleLookupRequest,
   VehicleLookupResponse,
   EmissionRequest,
@@ -116,6 +122,7 @@ export type {
 export type {
   CertifiedFieldResult,
   ApiSourceStatusState,
+  CacheDataStatus,
   ApiSourceStatus,
   IdentifierType,
   AutoFillRequest,
@@ -123,6 +130,9 @@ export type {
   AutoFillResult,
   ICertifiedField,
   IApiCachedData,
+  IResyncAdapterAvailability,
+  IResyncAvailability,
+  IResyncResult,
 } from "./autofill.js";
 export type {
   IListing,

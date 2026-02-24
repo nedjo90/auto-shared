@@ -41,12 +41,19 @@ export const certifiedFieldResultSchema = z.object({
   isCertified: z.boolean(),
 });
 
+export const cacheDataStatusSchema = z.enum(["fresh", "cached", "stale"]);
+
+export const adapterErrorTypeSchema = z.enum(["timeout", "connection", "response", "rate_limit"]);
+
 export const apiSourceStatusSchema = z.object({
   adapterInterface: z.string(),
   providerKey: z.string(),
   status: z.enum(["pending", "success", "failed", "cached"]),
   responseTimeMs: z.number().optional(),
   errorMessage: z.string().optional(),
+  cacheStatus: cacheDataStatusSchema.optional(),
+  cachedAt: z.string().optional(),
+  errorType: adapterErrorTypeSchema.optional(),
 });
 
 /**

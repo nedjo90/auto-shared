@@ -48,6 +48,8 @@ export {
   identifierTypeSchema,
   autoFillRequestSchema,
   certifiedFieldResultSchema,
+  cacheDataStatusSchema,
+  adapterErrorTypeSchema,
   apiSourceStatusSchema,
   parseAutoFillResponse,
 } from "./autofill.validator.js";

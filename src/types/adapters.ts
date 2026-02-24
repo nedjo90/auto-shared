@@ -16,6 +16,40 @@ export interface AdapterError {
   retryable: boolean;
 }
 
+// ─── Adapter Error Types (Story 3-11) ───────────────────────────────────────
+
+/** Specific adapter error type codes for resilience handling. */
+export type AdapterErrorType = "timeout" | "connection" | "response" | "rate_limit";
+
+/** Extended adapter error with typed error classification. */
+export interface AdapterTypedError extends AdapterError {
+  errorType: AdapterErrorType;
+  httpStatus?: number;
+  retryAfterMs?: number;
+}
+
+// ─── Circuit Breaker (Story 3-11) ───────────────────────────────────────────
+
+/** Circuit breaker state. */
+export type CircuitBreakerState = "closed" | "open" | "half-open";
+
+/** Circuit breaker configuration (loaded from ConfigParameter). */
+export interface ICircuitBreakerConfig {
+  failureThreshold: number;
+  cooldownMs: number;
+  halfOpenMaxAttempts: number;
+}
+
+/** Runtime circuit breaker status for a single adapter/provider. */
+export interface ICircuitBreakerStatus {
+  adapterName: string;
+  state: CircuitBreakerState;
+  consecutiveFailures: number;
+  lastFailureAt: string | null;
+  lastSuccessAt: string | null;
+  circuitOpenedAt: string | null;
+}
+
 // ─── 1. Vehicle Lookup ──────────────────────────────────────────────────────
 
 export interface VehicleLookupRequest {

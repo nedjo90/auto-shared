@@ -190,6 +190,22 @@ export interface IApiCallLog {
   requestId: string | null;
   errorMessage: string | null;
   timestamp: string;
+  /** Whether the call was a failure. */
+  isFailure?: boolean;
+  /** Typed error classification (timeout, connection, response, rate_limit). */
+  errorType?: import("./adapters.js").AdapterErrorType;
+}
+
+/** API provider health tracking entity (Story 3-11). */
+export interface IApiProviderHealth {
+  ID: string;
+  adapterName: string;
+  providerName: string;
+  consecutiveFailures: number;
+  lastSuccessAt: string | null;
+  lastFailureAt: string | null;
+  isCircuitOpen: boolean;
+  circuitOpenedAt: string | null;
 }
 
 /**
