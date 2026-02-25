@@ -174,7 +174,6 @@ export type {
   IPaymentSessionStatus,
 } from "./payment.js";
 export type {
-  NotificationType,
   IFavoriteChanges,
   IFavorite,
   IFavoriteEnriched,
@@ -182,6 +181,14 @@ export type {
   IFavoriteToggleResult,
   IFavoriteCheckResult,
 } from "./favorite.js";
+export type { NotificationType } from "./favorite.js";
+export type {
+  INotificationPreference,
+  IPushSubscription,
+  INotificationEvent,
+  IUnreadCountEvent,
+  ICreateNotificationInput,
+} from "./notification.js";
 export type {
   IConversation,
   IChatMessage,

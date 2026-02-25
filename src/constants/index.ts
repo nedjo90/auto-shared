@@ -92,12 +92,17 @@ export {
   ADAPTER_ERROR_LABELS,
   CACHE_STATUS_LABELS,
 } from "./resilience.js";
+export { MAX_FAVORITES_PER_USER, FAVORITES_PAGE_SIZE } from "./favorite.js";
 export {
   NOTIFICATION_TYPES,
-  MAX_FAVORITES_PER_USER,
-  FAVORITES_PAGE_SIZE,
+  PREFERENCE_NOTIFICATION_TYPES,
+  NOTIFICATION_TYPE_LABELS,
+  NOTIFICATION_HUB_NAME,
+  NOTIFICATION_EVENTS,
   NOTIFICATIONS_PAGE_SIZE,
-} from "./favorite.js";
+  VAPID_PUBLIC_KEY_ENV,
+} from "./notification.js";
+export type { NotificationType, NotificationEvent } from "./notification.js";
 export {
   MESSAGE_DELIVERY_STATUSES,
   MESSAGE_STATUS_TRANSITIONS,

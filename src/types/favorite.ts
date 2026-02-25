@@ -1,9 +1,10 @@
 // ─── Favorites & Notifications (Story 4-4) ──────────────────────────────────
 
 import type { IPublicListingCard } from "./listing.js";
+import type { NotificationType } from "../constants/notification.js";
 
-/** Notification types for user alerts. */
-export type NotificationType = "price_change" | "sold" | "certification_update" | "photos_added";
+/** @deprecated Use NotificationType from constants/notification.js instead. */
+export type { NotificationType };
 
 /** Change detection flags for a favorited listing. */
 export interface IFavoriteChanges {
@@ -45,8 +46,11 @@ export interface INotification {
   ID: string;
   userId: string;
   type: NotificationType;
+  title: string;
+  body: string;
   message: string;
-  listingId: string;
+  actionUrl: string | null;
+  listingId: string | null;
   isRead: boolean;
   createdAt: string;
 }

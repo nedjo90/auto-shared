@@ -71,3 +71,12 @@ export type {
   GetMessagesInput,
   UpdateMessageStatusInput,
 } from "./chat.validator.js";
+export {
+  notificationTypeSchema,
+  updateNotificationPreferenceSchema,
+  registerPushSubscriptionSchema,
+} from "./notification.validator.js";
+export type {
+  UpdateNotificationPreferenceInput,
+  RegisterPushSubscriptionInput,
+} from "./notification.validator.js";
