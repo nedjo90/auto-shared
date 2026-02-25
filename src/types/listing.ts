@@ -291,6 +291,7 @@ export interface IPublicListingDetail {
   visibilityLabel: string;
   publishedAt: string | null;
   soldAt: string | null;
+  city: string | null;
   sellerId: string;
   photos: IListingPhoto[];
   certifiedFields: {

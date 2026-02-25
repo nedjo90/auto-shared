@@ -44,6 +44,34 @@ export function generateListingSlug(listing: {
 }
 
 /**
+ * Generate a canonical URL for search pages.
+ * Normalizes and sorts query parameters to prevent duplicate content.
+ */
+export function generateCanonicalUrl(
+  basePath: string,
+  searchParams: Record<string, string | string[] | undefined>,
+): string {
+  const params = new URLSearchParams();
+  const sortedKeys = Object.keys(searchParams).sort();
+
+  for (const key of sortedKeys) {
+    const value = searchParams[key];
+    if (value === undefined || value === "" || value === null) continue;
+    if (Array.isArray(value)) {
+      const sorted = [...value].filter((v) => v !== "").sort();
+      for (const v of sorted) {
+        params.append(key, v);
+      }
+    } else {
+      params.set(key, value as string);
+    }
+  }
+
+  const qs = params.toString();
+  return qs ? `${basePath}?${qs}` : basePath;
+}
+
+/**
  * Extract listing ID (UUID) from a semantic slug.
  * The UUID is the last 5 hyphen-separated segments (8-4-4-4-12).
  */
