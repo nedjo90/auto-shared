@@ -92,3 +92,9 @@ export {
   ADAPTER_ERROR_LABELS,
   CACHE_STATUS_LABELS,
 } from "./resilience.js";
+export {
+  NOTIFICATION_TYPES,
+  MAX_FAVORITES_PER_USER,
+  FAVORITES_PAGE_SIZE,
+  NOTIFICATIONS_PAGE_SIZE,
+} from "./favorite.js";

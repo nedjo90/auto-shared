@@ -173,3 +173,12 @@ export type {
   ICheckoutSessionResult,
   IPaymentSessionStatus,
 } from "./payment.js";
+export type {
+  NotificationType,
+  IFavoriteChanges,
+  IFavorite,
+  IFavoriteEnriched,
+  INotification,
+  IFavoriteToggleResult,
+  IFavoriteCheckResult,
+} from "./favorite.js";
