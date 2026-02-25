@@ -1,19 +1,8 @@
 // ─── Notification Types (Story 5-2) ──────────────────────────────────────────
+// NOTE: INotification is defined in favorite.ts (with backward-compat `message` field)
+// and exported from types/index.ts. Do NOT re-define it here.
 
 import type { NotificationType } from "../constants/notification.js";
-
-/** A user notification. */
-export interface INotification {
-  ID: string;
-  userId: string;
-  type: NotificationType;
-  title: string;
-  body: string;
-  actionUrl: string | null;
-  listingId: string | null;
-  isRead: boolean;
-  createdAt: string;
-}
 
 /** A user's notification preference for a specific type. */
 export interface INotificationPreference {
