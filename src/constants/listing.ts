@@ -400,6 +400,28 @@ export const DEFAULT_CARD_FIELDS: readonly DefaultCardField[] = [
   },
 ] as const;
 
+// ─── Market Price Thresholds (Story 4-3) ──────────────────────────────────
+
+/** Thresholds for market price position classification.
+ * below: diff <= -5%, aligned: -5% < diff < 5%, above: diff >= 5% */
+export const MARKET_PRICE_THRESHOLDS = {
+  belowMaxPercent: -5,
+  aboveMinPercent: 5,
+} as const;
+
+/** Certification levels based on certified field ratio. */
+export const CERTIFICATION_LEVELS = [
+  "tres_documente",
+  "bien_documente",
+  "partiellement_documente",
+] as const;
+
+/** Certification level thresholds (percentage of certified fields). */
+export const CERTIFICATION_LEVEL_THRESHOLDS = {
+  tres_documente: 80,
+  bien_documente: 50,
+} as const;
+
 /** Pagination defaults for listing search. */
 export const LISTING_PAGE_SIZE = 20;
 

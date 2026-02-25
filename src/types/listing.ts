@@ -240,6 +240,9 @@ export interface IPublicListingCard {
   certifiedFieldCount: number;
   totalFieldCount: number;
   sellerId: string;
+  certificationLevel: CertificationLevel | null;
+  ctValid: boolean | null;
+  marketComparison: MarketComparison | null;
 }
 
 /** Paginated listing response for infinite scroll. */
@@ -299,7 +302,25 @@ export interface IPublicListingDetail {
     viewCount: number;
     favoriteCount: number;
   };
+  certificationLevel: CertificationLevel | null;
+  ctValid: boolean | null;
+  marketComparison: MarketComparison | null;
 }
+
+// ─── Market Price Comparison (Story 4-3) ──────────────────────────────────
+
+/** Market price position relative to estimated market value. */
+export type MarketPricePosition = "below" | "aligned" | "above" | "unavailable";
+
+/** Market comparison data attached to a listing. */
+export interface MarketComparison {
+  position: MarketPricePosition;
+  percentageDiff: number | null;
+  displayText: string;
+}
+
+/** Certification documentation level based on certified field ratio. */
+export type CertificationLevel = "tres_documente" | "bien_documente" | "partiellement_documente";
 
 // ─── Search Filters (Story 4-2) ──────────────────────────────────────────
 
@@ -325,6 +346,9 @@ export interface ISearchFilters {
   gearbox?: string[];
   bodyType?: string[];
   color?: string[];
+  certificationLevel?: CertificationLevel[];
+  ctValid?: boolean;
+  marketPosition?: MarketPricePosition;
   sort?: SearchSortOption;
 }
 
