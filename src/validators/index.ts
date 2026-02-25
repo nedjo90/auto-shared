@@ -58,3 +58,16 @@ export { photoMimeTypeSchema, reorderPhotosInputSchema } from "./photo.validator
 export type { ReorderPhotosInputValidated } from "./photo.validator.js";
 export { batchPublishRequestSchema, checkoutSessionRequestSchema } from "./payment.validator.js";
 export type { BatchPublishRequest, CheckoutSessionRequest } from "./payment.validator.js";
+export {
+  messageDeliveryStatusSchema,
+  startConversationInputSchema,
+  sendMessageInputSchema,
+  getMessagesInputSchema,
+  updateMessageStatusInputSchema,
+} from "./chat.validator.js";
+export type {
+  StartConversationInput,
+  SendMessageInput,
+  GetMessagesInput,
+  UpdateMessageStatusInput,
+} from "./chat.validator.js";

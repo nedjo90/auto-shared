@@ -98,3 +98,14 @@ export {
   FAVORITES_PAGE_SIZE,
   NOTIFICATIONS_PAGE_SIZE,
 } from "./favorite.js";
+export {
+  MESSAGE_DELIVERY_STATUSES,
+  MESSAGE_STATUS_TRANSITIONS,
+  isValidMessageStatusTransition,
+  CHAT_MAX_MESSAGE_LENGTH,
+  CHAT_MESSAGES_PAGE_SIZE,
+  CHAT_CONVERSATIONS_PAGE_SIZE,
+  CHAT_HUB_NAME,
+  CHAT_EVENTS,
+} from "./chat.js";
+export type { MessageDeliveryStatus, ChatEvent } from "./chat.js";

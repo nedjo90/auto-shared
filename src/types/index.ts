@@ -182,3 +182,13 @@ export type {
   IFavoriteToggleResult,
   IFavoriteCheckResult,
 } from "./favorite.js";
+export type {
+  IConversation,
+  IChatMessage,
+  IStartConversationResult,
+  ISendMessageResult,
+  IConversationListItem,
+  IChatMessagePage,
+  IChatMessageEvent,
+  IChatStatusEvent,
+} from "./chat.js";
