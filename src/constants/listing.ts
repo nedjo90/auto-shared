@@ -460,3 +460,42 @@ export const PHOTO_DEFAULT_MAX_SIZE_BYTES = 10 * 1024 * 1024; // 10MB raw upload
 
 /** Photo weight in visibility score calculation. */
 export const PHOTO_VISIBILITY_WEIGHT = 10;
+
+// ─── Seller Dashboard KPIs (Story 6-1) ──────────────────────────────────
+
+/** Available seller KPI metrics. */
+export const SELLER_KPI_METRICS = [
+  "activeListings",
+  "totalViews",
+  "totalContacts",
+  "avgDaysOnline",
+] as const;
+
+/** French labels for seller KPI metrics. */
+export const SELLER_KPI_LABELS: Record<(typeof SELLER_KPI_METRICS)[number], string> = {
+  activeListings: "Annonces actives",
+  totalViews: "Vues totales",
+  totalContacts: "Contacts reçus",
+  avgDaysOnline: "Jours en ligne (moy.)",
+};
+
+/** KPI trend comparison period in days. */
+export const SELLER_KPI_PERIOD_DAYS = 30;
+
+/** Seller listings performance table page size. */
+export const SELLER_LISTINGS_PAGE_SIZE = 20;
+
+/** Available drilldown periods (days). */
+export const SELLER_DRILLDOWN_PERIODS = [7, 30, 90] as const;
+
+/** Sort columns for seller listing performance table. */
+export const SELLER_LISTING_SORT_COLUMNS = [
+  "title",
+  "price",
+  "viewCount",
+  "chatCount",
+  "daysOnMarket",
+  "visibilityScore",
+] as const;
+
+export type SellerListingSortColumn = (typeof SELLER_LISTING_SORT_COLUMNS)[number];

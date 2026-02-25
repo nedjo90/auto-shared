@@ -2,6 +2,7 @@
 
 import type { ListingCondition } from "../constants/listing.js";
 import type { ListingStatus } from "../constants/roles.js";
+import type { IKpiValue } from "./dashboard.js";
 
 /** Full listing entity shape. */
 export interface IListing {
@@ -370,4 +371,51 @@ export interface ISellerPublishedListing {
   daysOnMarket: number | null;
   photoCount: number;
   primaryPhotoUrl: string | null;
+}
+
+// ─── Seller Dashboard KPIs (Story 6-1) ──────────────────────────────────
+
+/** Metric types available in the seller dashboard. */
+export type SellerKpiMetric = "activeListings" | "totalViews" | "totalContacts" | "avgDaysOnline";
+
+/** Aggregate KPI summary for a seller's dashboard. */
+export interface ISellerKpiSummary {
+  activeListings: IKpiValue;
+  totalViews: IKpiValue;
+  totalContacts: IKpiValue;
+  avgDaysOnline: IKpiValue;
+}
+
+/** Listing performance row with market position for the seller table. */
+export interface ISellerListingPerformance {
+  ID: string;
+  make: string | null;
+  model: string | null;
+  year: number | null;
+  price: number | null;
+  status: ListingStatus;
+  visibilityScore: number;
+  visibilityLabel: string;
+  publishedAt: string | null;
+  viewCount: number;
+  favoriteCount: number;
+  chatCount: number;
+  daysOnMarket: number | null;
+  photoCount: number;
+  primaryPhotoUrl: string | null;
+  marketPosition: MarketPricePosition | null;
+}
+
+/** Single data point in a metric drilldown time series. */
+export interface IMetricDrilldownPoint {
+  date: string;
+  value: number;
+}
+
+/** Drilldown data for a metric over time with insights. */
+export interface IMetricDrilldownData {
+  metric: SellerKpiMetric;
+  listingId: string | null;
+  points: IMetricDrilldownPoint[];
+  insights: string[];
 }
