@@ -154,6 +154,8 @@ export type {
   IPublicListingCard,
   IListingPage,
   IPublicListingDetail,
+  SearchSortOption,
+  ISearchFilters,
 } from "./listing.js";
 export type {
   ScoreSuggestion,

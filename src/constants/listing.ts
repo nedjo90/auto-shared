@@ -403,6 +403,23 @@ export const DEFAULT_CARD_FIELDS: readonly DefaultCardField[] = [
 /** Pagination defaults for listing search. */
 export const LISTING_PAGE_SIZE = 20;
 
+// ─── Search Sort Options (Story 4-2) ────────────────────────────────────
+
+/** Available sort options for marketplace search results. */
+export const SEARCH_SORT_OPTIONS = [
+  { value: "relevance", labelFr: "Pertinence", labelEn: "Relevance" },
+  { value: "price_asc", labelFr: "Prix croissant", labelEn: "Price: Low to High" },
+  { value: "price_desc", labelFr: "Prix décroissant", labelEn: "Price: High to Low" },
+  { value: "date_desc", labelFr: "Plus récentes", labelEn: "Most Recent" },
+  { value: "mileage_asc", labelFr: "Kilométrage", labelEn: "Mileage: Low to High" },
+] as const;
+
+/** Default search sort option. */
+export const DEFAULT_SEARCH_SORT = "relevance" as const;
+
+/** Debounce delay (ms) for filter changes before triggering API call. */
+export const SEARCH_DEBOUNCE_MS = 300;
+
 // ─── Photo Constants (Story 3-4) ──────────────────────────────────────────
 
 /** Allowed MIME types for photo upload. */

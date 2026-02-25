@@ -52,6 +52,12 @@ export interface IListing {
   vehicleType: string | null;
   plantCountry: string | null;
 
+  // Location (Story 4-2)
+  latitude: number | null;
+  longitude: number | null;
+  city: string | null;
+  postalCode: string | null;
+
   // Lifecycle timestamps
   publishedAt: string | null;
   soldAt: string | null;
@@ -293,6 +299,33 @@ export interface IPublicListingDetail {
     viewCount: number;
     favoriteCount: number;
   };
+}
+
+// ─── Search Filters (Story 4-2) ──────────────────────────────────────────
+
+/** Available sort options for search results. */
+export type SearchSortOption =
+  | "price_asc"
+  | "price_desc"
+  | "date_desc"
+  | "mileage_asc"
+  | "relevance";
+
+/** Search filter parameters sent to the backend. */
+export interface ISearchFilters {
+  search?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  make?: string;
+  model?: string;
+  minYear?: number;
+  maxYear?: number;
+  maxMileage?: number;
+  fuelType?: string[];
+  gearbox?: string[];
+  bodyType?: string[];
+  color?: string[];
+  sort?: SearchSortOption;
 }
 
 /** Seller listings response (active published listings). */
