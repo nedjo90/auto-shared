@@ -1,2 +1,2 @@
-export { renderSeoTemplate } from "./seo.js";
+export { renderSeoTemplate, generateListingSlug, extractIdFromSlug } from "./seo.js";
 export { calculateCompletionPercentage } from "./completion.js";

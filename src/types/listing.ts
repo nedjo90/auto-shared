@@ -221,6 +221,7 @@ export interface IConfigListingCard {
 /** Public listing card data for marketplace browsing. */
 export interface IPublicListingCard {
   ID: string;
+  slug: string;
   make: string | null;
   model: string | null;
   variant: string | null;
