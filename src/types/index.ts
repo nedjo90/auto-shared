@@ -202,6 +202,13 @@ export type {
   IMarketWatchCheckResult,
 } from "./market-watch.js";
 export type {
+  ReportTargetType,
+  ReportStatus,
+  IReportSubmission,
+  IReportSubmissionResult,
+  IReport,
+} from "./moderation.js";
+export type {
   IConversation,
   IChatMessage,
   IStartConversationResult,
