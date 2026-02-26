@@ -205,12 +205,20 @@ export type {
   ReportTargetType,
   ReportStatus,
   ReportSortOption,
+  ModerationActionType,
   IReportSubmission,
   IReportSubmissionResult,
   IReport,
   IReportMetrics,
   IReportDetail,
+  IModerationAction,
+  IModerationActionResult,
+  ISellerHistory,
+  ISellerStatistics,
+  ISellerTimelineEvent,
+  IViolationPattern,
 } from "./moderation.js";
+export type { PatternSeverity, PatternType } from "./moderation.js";
 export type {
   IConversation,
   IChatMessage,
