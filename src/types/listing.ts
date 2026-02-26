@@ -404,6 +404,9 @@ export interface ISellerListingPerformance {
   photoCount: number;
   primaryPhotoUrl: string | null;
   marketPosition: MarketPricePosition | null;
+  marketPercentageDiff: number | null;
+  marketDisplayText: string | null;
+  marketIsEstimation: boolean;
 }
 
 /** Single data point in a metric drilldown time series. */
