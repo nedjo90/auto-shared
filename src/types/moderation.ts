@@ -131,6 +131,7 @@ export interface ISellerHistory {
   displayName: string;
   memberSince: string;
   accountStatus: string;
+  sellerRating: number | null;
   statistics: ISellerStatistics;
   patterns: IViolationPattern[];
   timeline: ISellerTimelineEvent[];

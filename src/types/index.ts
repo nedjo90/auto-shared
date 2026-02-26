@@ -217,8 +217,9 @@ export type {
   ISellerStatistics,
   ISellerTimelineEvent,
   IViolationPattern,
+  PatternSeverity,
+  PatternType,
 } from "./moderation.js";
-export type { PatternSeverity, PatternType } from "./moderation.js";
 export type {
   IConversation,
   IChatMessage,
