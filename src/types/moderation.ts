@@ -23,13 +23,35 @@ export interface IReportSubmissionResult {
 export interface IReport {
   ID: string;
   reporterId: string;
+  reporterName: string | null;
   targetType: ReportTargetType;
   targetId: string;
+  targetLabel: string | null;
   reasonId: string;
   reasonLabel: string;
   severity: import("./config.js").ReportSeverity;
   description: string;
   status: ReportStatus;
+  assignedTo: string | null;
   createdAt: string;
   updatedAt: string | null;
 }
+
+/** Moderation queue metrics summary. */
+export interface IReportMetrics {
+  pendingCount: number;
+  inProgressCount: number;
+  treatedThisWeek: number;
+  dismissedThisWeek: number;
+  weeklyTrend: number;
+}
+
+/** Report detail with full context. */
+export interface IReportDetail extends IReport {
+  reporterEmail: string | null;
+  targetData: string | null;
+  relatedReportsCount: number;
+}
+
+/** Sort options for the report queue. */
+export type ReportSortOption = "severity" | "date" | "status";

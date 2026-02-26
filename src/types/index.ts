@@ -204,9 +204,12 @@ export type {
 export type {
   ReportTargetType,
   ReportStatus,
+  ReportSortOption,
   IReportSubmission,
   IReportSubmissionResult,
   IReport,
+  IReportMetrics,
+  IReportDetail,
 } from "./moderation.js";
 export type {
   IConversation,
