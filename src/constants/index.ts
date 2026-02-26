@@ -121,3 +121,4 @@ export {
   CHAT_EVENTS,
 } from "./chat.js";
 export type { MessageDeliveryStatus, ChatEvent } from "./chat.js";
+export { MAX_MARKET_WATCHES_PER_SELLER, MARKET_WATCH_PAGE_SIZE } from "./market-watch.js";

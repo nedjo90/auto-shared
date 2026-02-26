@@ -195,6 +195,13 @@ export type {
   ICreateNotificationInput,
 } from "./notification.js";
 export type {
+  IMarketWatch,
+  IListingPriceHistory,
+  IMarketWatchEnriched,
+  IMarketWatchToggleResult,
+  IMarketWatchCheckResult,
+} from "./market-watch.js";
+export type {
   IConversation,
   IChatMessage,
   IStartConversationResult,
